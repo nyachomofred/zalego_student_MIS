@@ -144,6 +144,7 @@ class Personalinfo extends \yii\db\ActiveRecord
             'campus'=>'Campus',
             'intake'=>'Intake',
             'level'=>'Level',
+            'globalSearch'=>'',
         ];
     }
 }

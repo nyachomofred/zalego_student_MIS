@@ -15,11 +15,12 @@ class ProjectSearch extends Project
     /**
      * @inheritdoc
      */
+    public $globalSearch;
     public function rules()
     {
         return [
             [['id', 'student_id'], 'integer'],
-            [['project_name', 'description', 'documentation', 'upload', 'date_uploaded', 'status', 'comment'], 'safe'],
+            [['project_name', 'description', 'documentation','globalSearch', 'upload', 'date_uploaded', 'status', 'comment'], 'safe'],
         ];
     }
 
@@ -63,13 +64,13 @@ class ProjectSearch extends Project
             'student_id' => $this->student_id,
         ]);
 
-        $query->andFilterWhere(['like', 'project_name', $this->project_name])
-            ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'documentation', $this->documentation])
-            ->andFilterWhere(['like', 'upload', $this->upload])
-            ->andFilterWhere(['like', 'date_uploaded', $this->date_uploaded])
-            ->andFilterWhere(['like', 'status', $this->status])
-            ->andFilterWhere(['like', 'comment', $this->comment]);
+        $query->orFilterWhere(['like', 'project_name', $this->globalSearch])
+            ->orFilterWhere(['like', 'description', $this->globalSearch])
+            ->orFilterWhere(['like', 'documentation', $this->globalSearch])
+            ->orFilterWhere(['like', 'upload', $this->globalSearch])
+            ->orFilterWhere(['like', 'date_uploaded', $this->globalSearch])
+            ->orFilterWhere(['like', 'status', $this->globalSearch])
+            ->orFilterWhere(['like', 'comment', $this->globalSearch]);
 
         return $dataProvider;
     }

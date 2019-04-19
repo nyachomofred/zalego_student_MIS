@@ -64,6 +64,7 @@ class PersonalinfoController extends Controller
      */
     public function actionView($id)
     {
+        $this->layout='CampusLayout';
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -76,6 +77,7 @@ class PersonalinfoController extends Controller
      */
     public function actionCreate()
     {
+        $this->layout='CampusLayout';
         $model = new Personalinfo();
         $sponsorinfo=new Sponsorinfo();
         $employerinfo=new Employerinfo();
@@ -123,6 +125,7 @@ class PersonalinfoController extends Controller
     
     public function actionUpdate($id)
     {
+        $this->layout='CampusLayout';
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

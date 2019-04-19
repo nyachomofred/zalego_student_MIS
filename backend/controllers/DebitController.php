@@ -36,6 +36,7 @@ class DebitController extends Controller
      */
     public function actionIndex()
     {
+        $this->layout='CampusLayout';
         $searchModel = new DebitSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -61,6 +62,7 @@ class DebitController extends Controller
     
     public function actionCreate()
     {
+        $this->layout='CampusLayout';
         $balance = new Balance();
         $model = new Debit();
 
@@ -83,15 +85,10 @@ class DebitController extends Controller
         ]);
     }
 
-    /**
-     * Updates an existing Debit model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
+   
     public function actionUpdate($id)
     {
+        $this->layout='CampusLayout';
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -103,15 +100,10 @@ class DebitController extends Controller
         ]);
     }
 
-    /**
-     * Deletes an existing Debit model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
+   
     public function actionDelete($id)
     {
+        $this->layout='CampusLayout';
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

@@ -42,10 +42,11 @@ class Campus extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            //'id' => 'ID',
-            //'campus_code' => '',
-            //'campus_name' => 'Campus Name',
-            //'campus_location' => 'Campus Location',
+            'id' => 'ID',
+            'campus_code' => '',
+            'campus_name' => 'Campus Name',
+            'campus_location' => 'Campus Location',
+            'globalSearch'=>'',
         ];
     }
 }

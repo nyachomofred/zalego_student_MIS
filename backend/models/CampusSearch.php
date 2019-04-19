@@ -15,11 +15,12 @@ class CampusSearch extends Campus
     /**
      * @inheritdoc
      */
+    public $globalSearch;
     public function rules()
     {
         return [
             [['id'], 'integer'],
-            [['campus_code', 'campus_name', 'campus_location'], 'safe'],
+            [['campus_code', 'campus_name','globalSearch', 'campus_location'], 'safe'],
         ];
     }
 
@@ -62,9 +63,9 @@ class CampusSearch extends Campus
             'id' => $this->id,
         ]);
 
-        $query->andFilterWhere(['like', 'campus_code', $this->campus_code])
-            ->andFilterWhere(['like', 'campus_name', $this->campus_name])
-            ->andFilterWhere(['like', 'campus_location', $this->campus_location]);
+        $query->orFilterWhere(['like', 'campus_code', $this->globalSearch])
+            ->orFilterWhere(['like', 'campus_name', $this->globalSearch])
+            ->orFilterWhere(['like', 'campus_location', $this->globalSearch]);
 
         return $dataProvider;
     }

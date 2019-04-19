@@ -56,6 +56,7 @@ class Project extends \yii\db\ActiveRecord
             'date_uploaded' => 'Date Uploaded',
             'status' => 'Status',
             'comment' => 'Comment',
+            'globalSearch'=>'',
         ];
     }
 

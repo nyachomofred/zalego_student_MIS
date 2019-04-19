@@ -1,40 +1,40 @@
-<?php
 
+<?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
-/* @var $this yii\web\View */
-/* @var $model backend\models\CourseSearch */
-/* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="course-search">
+<div class="personalinfo-search">
+<div class="row">
+        <?php $form = ActiveForm::begin([
+            'action' => ['index'],
+            'method' => 'get',
+            'options' => [
+                'data-pjax' => 1
+            ],
+        ]); ?>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+        <?= $form->field($model, 'globalSearch')->textinput(['placeholder'=>'search..']) ?>
+        </div>
+         <?php // echo $form->field($model, 'upload') ?>
 
-    <?php $form = ActiveForm::begin([
-        'action' => ['index'],
-        'method' => 'get',
-        'options' => [
-            'data-pjax' => 1
-        ],
-    ]); ?>
+         <?php // echo $form->field($model, 'date_uploaded') ?>
 
-    <?= $form->field($model, 'id') ?>
+         <?php // echo $form->field($model, 'status') ?>
 
-    <?= $form->field($model, 'course_code') ?>
+         <?php // echo $form->field($model, 'comment') ?>
 
-    <?= $form->field($model, 'course_name') ?>
-
-    <?= $form->field($model, 'course_level') ?>
-
-    <?= $form->field($model, 'course_duration') ?>
-
-    <?php // echo $form->field($model, 'course_description') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <div class="form-group">
+            <div class="row" style="height:20px;"></div>
+            <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+            <?=Html::a('Reset',['index'],['class'=>'btn btn-default']);?>
+           
+        </div>
+       
+        <?php ActiveForm::end(); ?>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
 </div>

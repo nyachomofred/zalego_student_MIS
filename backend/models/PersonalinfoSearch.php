@@ -15,11 +15,12 @@ class PersonalinfoSearch extends Personalinfo
     /**
      * @inheritdoc
      */
+    public $globalSearch;
     public function rules()
     {
         return [
             [['id'], 'integer'],
-            [['course_period', 'payment_information','level', 'campus','intake','student_id', 'full_name', 'date_of_birth', 'gender', 'id_no', 'email', 'phone', 'alternate_phone', 'citizenship', 'marital_status', 'future_career', 'physical_address', 'religion', 'medical_condition'], 'safe'],
+            [['course_period', 'payment_information','level','globalSearch', 'campus','intake','student_id', 'full_name', 'date_of_birth', 'gender', 'id_no', 'email', 'phone', 'alternate_phone', 'citizenship', 'marital_status', 'future_career', 'physical_address', 'religion', 'medical_condition'], 'safe'],
         ];
     }
 
@@ -62,25 +63,25 @@ class PersonalinfoSearch extends Personalinfo
             'id' => $this->id,
         ]);
 
-        $query->andFilterWhere(['like', 'course_period', $this->course_period])
-             ->andFilterWhere(['like', 'campus', $this->campus])
-             ->andFilterWhere(['like', 'intake', $this->intake])
-            ->andFilterWhere(['like', 'payment_information', $this->payment_information])
-            ->andFilterWhere(['like', 'student_id', $this->student_id])
-            ->andFilterWhere(['like', 'full_name', $this->full_name])
-            ->andFilterWhere(['like', 'date_of_birth', $this->date_of_birth])
-            ->andFilterWhere(['like', 'gender', $this->gender])
-            ->andFilterWhere(['like', 'id_no', $this->id_no])
-            ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'level', $this->level])
-            ->andFilterWhere(['like', 'phone', $this->phone])
-            ->andFilterWhere(['like', 'alternate_phone', $this->alternate_phone])
-            ->andFilterWhere(['like', 'citizenship', $this->citizenship])
-            ->andFilterWhere(['like', 'marital_status', $this->marital_status])
-            ->andFilterWhere(['like', 'future_career', $this->future_career])
-            ->andFilterWhere(['like', 'physical_address', $this->physical_address])
-            ->andFilterWhere(['like', 'religion', $this->religion])
-            ->andFilterWhere(['like', 'medical_condition', $this->medical_condition]);
+        $query->orFilterWhere(['like', 'course_period', $this->globalSearch])
+             ->orFilterWhere(['like', 'campus', $this->globalSearch])
+             ->orFilterWhere(['like', 'intake', $this->globalSearch])
+            ->orFilterWhere(['like', 'payment_information', $this->globalSearch])
+            ->orFilterWhere(['like', 'student_id', $this->globalSearch])
+            ->orFilterWhere(['like', 'full_name', $this->globalSearch])
+            ->orFilterWhere(['like', 'date_of_birth', $this->globalSearch])
+            ->orFilterWhere(['like', 'gender', $this->globalSearch])
+            ->orFilterWhere(['like', 'id_no', $this->globalSearch])
+            ->orFilterWhere(['like', 'email', $this->globalSearch])
+            ->orFilterWhere(['like', 'level', $this->globalSearch])
+            ->orFilterWhere(['like', 'phone', $this->globalSearch])
+            ->orFilterWhere(['like', 'alternate_phone', $this->globalSearch])
+            ->orFilterWhere(['like', 'citizenship', $this->globalSearch])
+            ->orFilterWhere(['like', 'marital_status', $this->globalSearch])
+            ->orFilterWhere(['like', 'future_career', $this->globalSearch])
+            ->orFilterWhere(['like', 'physical_address', $this->globalSearch])
+            ->orFilterWhere(['like', 'religion', $this->globalSearch])
+            ->orFilterWhere(['like', 'medical_condition', $this->globalSearch]);
 
         return $dataProvider;
     }

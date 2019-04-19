@@ -19,7 +19,7 @@ class CourseSearch extends Course
     {
         return [
             [['id'], 'integer'],
-            [['course_code', 'course_name', 'course_level', 'course_duration', 'course_description'], 'safe'],
+            [['course_code', 'course_name', 'course_level','globalSearch', 'course_duration', 'course_description'], 'safe'],
         ];
     }
 
@@ -62,11 +62,11 @@ class CourseSearch extends Course
             'id' => $this->id,
         ]);
 
-        $query->andFilterWhere(['like', 'course_code', $this->course_code])
-            ->andFilterWhere(['like', 'course_name', $this->course_name])
-            ->andFilterWhere(['like', 'course_level', $this->course_level])
-            ->andFilterWhere(['like', 'course_duration', $this->course_duration])
-            ->andFilterWhere(['like', 'course_description', $this->course_description]);
+        $query->orFilterWhere(['like', 'course_code', $this->globalSearch])
+            ->orFilterWhere(['like', 'course_name', $this->globalSearch])
+            ->orFilterWhere(['like', 'course_level', $this->globalSearch])
+            ->orFilterWhere(['like', 'course_duration', $this->globalSearch])
+            ->orFilterWhere(['like', 'course_description', $this->globalSearch]);
 
         return $dataProvider;
     }

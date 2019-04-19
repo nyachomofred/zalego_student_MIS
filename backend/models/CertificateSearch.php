@@ -15,11 +15,12 @@ class CertificateSearch extends Certificate
     /**
      * @inheritdoc
      */
+    public $globalSearch;
     public function rules()
     {
         return [
             [['id', 'student_id'], 'integer'],
-            [['certificate_no', 'status', 'date_collected'], 'safe'],
+            [['certificate_no', 'status', 'globalSearch','date_collected'], 'safe'],
         ];
     }
 
@@ -63,9 +64,9 @@ class CertificateSearch extends Certificate
             'student_id' => $this->student_id,
         ]);
 
-        $query->andFilterWhere(['like', 'certificate_no', $this->certificate_no])
-            ->andFilterWhere(['like', 'status', $this->status])
-            ->andFilterWhere(['like', 'date_collected', $this->date_collected]);
+        $query->orFilterWhere(['like', 'certificate_no', $this->globalSearch])
+            ->orFilterWhere(['like', 'status', $this->globalSearch])
+            ->orFilterWhere(['like', 'date_collected', $this->globalSearch]);
 
         return $dataProvider;
     }

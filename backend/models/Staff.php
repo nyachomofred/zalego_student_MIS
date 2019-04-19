@@ -50,6 +50,7 @@ class Staff extends \yii\db\ActiveRecord
             'national_id' => 'National ID',
             'gender' => 'Gender',
             'role' => 'Role',
+            'globalSearch'=>'',
         ];
     }
 }

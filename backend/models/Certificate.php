@@ -48,6 +48,7 @@ class Certificate extends \yii\db\ActiveRecord
             'certificate_no' => 'Certificate No',
             'status' => 'Status',
             'date_collected' => 'Date Collected',
+            'globalSearch'=>'',
         ];
     }
 

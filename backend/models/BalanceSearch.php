@@ -12,14 +12,13 @@ use backend\models\Balance;
  */
 class BalanceSearch extends Balance
 {
-    /**
-     * @inheritdoc
-     */
+   
+    public $globalSearch;
     public function rules()
     {
         return [
             [['id', 'student_id'], 'integer'],
-            [['required_amount', 'amount_to_pay', 'amount_paid', 'balance'], 'safe'],
+            [['required_amount', 'amount_to_pay','globalSearch', 'amount_paid', 'balance'], 'safe'],
         ];
     }
 
@@ -63,10 +62,10 @@ class BalanceSearch extends Balance
             'student_id' => $this->student_id,
         ]);
 
-        $query->andFilterWhere(['like', 'required_amount', $this->required_amount])
-            ->andFilterWhere(['like', 'amount_to_pay', $this->amount_to_pay])
-            ->andFilterWhere(['like', 'amount_paid', $this->amount_paid])
-            ->andFilterWhere(['like', 'balance', $this->balance]);
+        $query->orFilterWhere(['like', 'required_amount', $this->globalSearch])
+            ->orFilterWhere(['like', 'amount_to_pay', $this->globalSearch])
+            ->orFilterWhere(['like', 'amount_paid', $this->globalSearch])
+            ->orFilterWhere(['like', 'balance', $this->globalSearch]);
 
         return $dataProvider;
     }

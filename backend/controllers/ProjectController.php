@@ -52,6 +52,7 @@ class ProjectController extends Controller
      */
     public function actionView($id)
     {
+        $this->layout='CampusLayout';
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -64,6 +65,7 @@ class ProjectController extends Controller
      */
     public function actionCreate()
     {
+        $this->layout='CampusLayout';
         $model = new Project();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -84,6 +86,7 @@ class ProjectController extends Controller
      */
     public function actionUpdate($id)
     {
+        $this->layout='CampusLayout';
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -95,13 +98,7 @@ class ProjectController extends Controller
         ]);
     }
 
-    /**
-     * Deletes an existing Project model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
+    
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();

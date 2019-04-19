@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'id')->textInput(['placeholder'=>'search......']) ?>
+    <?= $form->field($model, 'globalSearch')->textInput(['placeholder'=>'search......']) ?>
 
     <?php //echo $form->field($model, 'student_id') ?>
 
@@ -32,7 +32,7 @@ use yii\widgets\ActiveForm;
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <?=Html::a('Reset',['index'],['class'=>'btn btn-default']);?>
     </div>
 
     <?php ActiveForm::end(); ?>

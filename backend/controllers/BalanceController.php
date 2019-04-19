@@ -35,6 +35,7 @@ class BalanceController extends Controller
      */
     public function actionIndex()
     {
+        $this->layout='CampusLayout';
         $searchModel = new BalanceSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -51,6 +52,7 @@ class BalanceController extends Controller
     }
     public function actionView($id)
     {
+        $this->layout='CampusLayout';
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -63,6 +65,7 @@ class BalanceController extends Controller
      */
     public function actionCreate()
     {
+        $this->layout='CampusLayout';
         $model = new Balance();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -83,6 +86,7 @@ class BalanceController extends Controller
      */
     public function actionUpdate($id)
     {
+        $this->layout='CampusLayout';
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

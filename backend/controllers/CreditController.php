@@ -37,6 +37,7 @@ class CreditController extends Controller
      */
     public function actionIndex()
     {
+        $this->layout='CampusLayout';
         $searchModel = new CreditSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -54,6 +55,7 @@ class CreditController extends Controller
      */
     public function actionView($id)
     {
+        $this->layout='CampusLayout';
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -66,6 +68,7 @@ class CreditController extends Controller
      */
     public function actionCreate()
     {
+        $this->layout='CampusLayout';
         $model = new Credit();
         $balance = new Balance();
         
@@ -97,6 +100,7 @@ class CreditController extends Controller
      */
     public function actionUpdate($id)
     {
+        $this->layout='CampusLayout';
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

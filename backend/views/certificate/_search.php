@@ -1,38 +1,40 @@
-<?php
 
+<?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
-/* @var $this yii\web\View */
-/* @var $model backend\models\CertificateSearch */
-/* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="certificate-search">
+<div class="personalinfo-search">
+<div class="row">
+        <?php $form = ActiveForm::begin([
+            'action' => ['index'],
+            'method' => 'get',
+            'options' => [
+                'data-pjax' => 1
+            ],
+        ]); ?>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+        <?= $form->field($model, 'globalSearch')->textinput(['placeholder'=>'search..']) ?>
+        </div>
+         <?php // echo $form->field($model, 'upload') ?>
 
-    <?php $form = ActiveForm::begin([
-        'action' => ['index'],
-        'method' => 'get',
-        'options' => [
-            'data-pjax' => 1
-        ],
-    ]); ?>
+         <?php // echo $form->field($model, 'date_uploaded') ?>
 
-    <?= $form->field($model, 'id') ?>
+         <?php // echo $form->field($model, 'status') ?>
 
-    <?= $form->field($model, 'student_id') ?>
+         <?php // echo $form->field($model, 'comment') ?>
 
-    <?= $form->field($model, 'certificate_no') ?>
-
-    <?= $form->field($model, 'status') ?>
-
-    <?= $form->field($model, 'date_collected') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <div class="form-group">
+            <div class="row" style="height:20px;"></div>
+            <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+            <?=Html::a('Reset',['index'],['class'=>'btn btn-default']);?>
+           
+        </div>
+       
+        <?php ActiveForm::end(); ?>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
 </div>

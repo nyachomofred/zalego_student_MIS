@@ -15,11 +15,12 @@ class StaffSearch extends Staff
     /**
      * @inheritdoc
      */
+    public $globalSearch;
     public function rules()
     {
         return [
             [['id'], 'integer'],
-            [['passpot', 'staff_id', 'name', 'phone', 'national_id', 'gender', 'role'], 'safe'],
+            [['passpot', 'staff_id', 'name', 'phone', 'globalSearch','national_id', 'gender', 'role'], 'safe'],
         ];
     }
 
@@ -62,13 +63,13 @@ class StaffSearch extends Staff
             'id' => $this->id,
         ]);
 
-        $query->andFilterWhere(['like', 'passpot', $this->passpot])
-            ->andFilterWhere(['like', 'staff_id', $this->staff_id])
-            ->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'phone', $this->phone])
-            ->andFilterWhere(['like', 'national_id', $this->national_id])
-            ->andFilterWhere(['like', 'gender', $this->gender])
-            ->andFilterWhere(['like', 'role', $this->role]);
+        $query->orFilterWhere(['like', 'passpot', $this->globalSearch])
+            ->orFilterWhere(['like', 'staff_id', $this->globalSearch])
+            ->orFilterWhere(['like', 'name', $this->globalSearch])
+            ->orFilterWhere(['like', 'phone', $this->globalSearch])
+            ->orFilterWhere(['like', 'national_id', $this->globalSearch])
+            ->orFilterWhere(['like', 'gender', $this->globalSearch])
+            ->orFilterWhere(['like', 'role', $this->globalSearch]);
 
         return $dataProvider;
     }

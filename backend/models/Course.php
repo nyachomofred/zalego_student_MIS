@@ -19,6 +19,7 @@ class Course extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public $globalSearch;
     public static function tableName()
     {
         return 'course';
@@ -51,6 +52,8 @@ class Course extends \yii\db\ActiveRecord
             'course_level' => 'Course Level',
             'course_duration' => 'Course Duration',
             'course_description' => 'Course Description',
+            'globalSearch'=>'',
         ];
     }
 }
+

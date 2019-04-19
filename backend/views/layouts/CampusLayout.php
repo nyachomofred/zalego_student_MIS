@@ -24,13 +24,13 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="skin-blue sidebar-mini">
 <?php $this->beginBody() ?>
 
 <div class="wrap">
     <header class="main-header">
         <!-- Logo -->
-        <a href="#" class="logo">
+        <a href="/zalego/backend/web/index.php?r=site" class="logo"> 
         <span class="logo-lg"><b>Zalego </b>SMIS</span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
@@ -44,26 +44,37 @@ AppAsset::register($this);
             <ul class="nav navbar-nav">
             <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="<?php echo url::to('@web/images/user.jpeg');?>" class="user-image" alt="User Image">
-                <span class="hidden-xs">Nyachomo omollo fred</span>
+                <img src="<?php echo url::to('@web/images/zalego.jpeg');?>" class="user-image" alt="User Image">
+                <span class="hidden-xs"><?= \Yii::$app->user->identity->username?></span>
                 </a>
                 <ul class="dropdown-menu">
                 <!-- User image -->
                 <li class="user-header">
-                    <img src="<?php echo url::to('@web/images/user.jpeg');?>" class="img-circle" alt="User Image">
+                    <img src="<?php echo url::to('@web/images/zalego.jpeg');?>" class="img-circle" alt="User Image">
 
                     <p>
-                    Nyachomo omollo fred - System Admin
+                    <?= \Yii::$app->user->identity->username?>-system admin
                     <small>Member  since  2018</small>
                     </p>
                 </li>
                
                 <li class="user-footer">
-                    <div class="pull-left">
-                    <a href="#" class="btn btn-default btn-flat">Profile</a>
-                    </div>
                     <div class="pull-right">
-                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                    <a href="#" class="btn btn-default btn-flat">profile</a>
+                    </div>
+
+                    <div class="pull-left">
+                    <?=
+                    '<li>'
+                    . Html::beginForm(['/site/logout'], 'post')
+                    . Html::submitButton(
+                        'Logout (' . Yii::$app->user->identity->username . ')',
+                        ['class' => 'btn btn-default btn-flat']
+                    )
+                    . Html::endForm()
+                    . '</li>';
+                    
+                    ?>
                     </div>
                 </li>
                 </ul>
@@ -76,6 +87,8 @@ AppAsset::register($this);
         </div>
         </nav>
     </header>
+    
+ 
 
     <div class="container">
         <?= Breadcrumbs::widget([
@@ -86,13 +99,6 @@ AppAsset::register($this);
     </div>
 </div>
 
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
 
 <?php $this->endBody() ?>
 </body>

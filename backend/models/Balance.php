@@ -50,6 +50,7 @@ class Balance extends \yii\db\ActiveRecord
             'amount_to_pay' => 'Amount To Pay',
             'amount_paid' => 'Amount Paid',
             'balance' => 'Balance',
+            'globalSearch'=>'',
         ];
     }
 
