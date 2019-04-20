@@ -35,6 +35,7 @@ class ProjectController extends Controller
      */
     public function actionIndex()
     {
+        $this->layout='CampusLayout';
         $searchModel = new ProjectSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
        
@@ -66,6 +67,7 @@ class ProjectController extends Controller
     public function actionCreate()
     {
         $this->layout='CampusLayout';
+       
         $model = new Project();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -77,20 +79,22 @@ class ProjectController extends Controller
         ]);
     }
 
-    /**
-     * Updates an existing Project model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
+   
     public function actionUpdate($id)
     {
         $this->layout='CampusLayout';
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->db->createCommand()
+                ->update('project', ['status' => $model->status,'comment'=>$model->comment], ['student_id' => $model->student_id])
+                ->execute();
+                Yii::$app->session->setFlash('update', '
+                <div class="alert alert-success alert-dismissable">
+                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                <strong> </strong> Succcess.</div>'
+             );
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [
@@ -106,13 +110,7 @@ class ProjectController extends Controller
         return $this->redirect(['index']);
     }
 
-    /**
-     * Finds the Project model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Project the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
+   
     protected function findModel($id)
     {
         if (($model = Project::findOne($id)) !== null) {

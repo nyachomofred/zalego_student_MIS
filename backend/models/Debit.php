@@ -31,6 +31,7 @@ class Debit extends \yii\db\ActiveRecord
     {
         return [
             [['student_id'], 'integer'],
+            [['student_id'], 'unique'],
             [['required_amount', 'amount_pay'], 'string', 'max' => 255],
             [['student_id'], 'exist', 'skipOnError' => true, 'targetClass' => Personalinfo::className(), 'targetAttribute' => ['student_id' => 'id']],
         ];

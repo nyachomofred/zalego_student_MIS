@@ -75,6 +75,11 @@ class DebitController extends Controller
                     $balance->amount_paid=0;
                     $balance->balance=0;
                     $balance->save();
+                    Yii::$app->session->setFlash('debit', '
+                        <div class="alert alert-success alert-dismissable">
+                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                        <strong> </strong> Succcess.</div>'
+                    );
                     return $this->redirect(['balance/index']);
                 }
             }

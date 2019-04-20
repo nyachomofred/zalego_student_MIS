@@ -3,9 +3,6 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model backend\models\Balance */
-/* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="balance-form">

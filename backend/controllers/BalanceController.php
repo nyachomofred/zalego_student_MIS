@@ -58,18 +58,24 @@ class BalanceController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new Balance model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
     public function actionCreate()
     {
         $this->layout='CampusLayout';
         $model = new Balance();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->required_amount>=$model->amount_to_pay){
+                $model->amount_paid=0;
+                $model->balance=$model->amount_to_pay;
+                $model->save();
+                Yii::$app->session->setFlash('debit', '
+                   <div class="alert alert-success alert-dismissable">
+                   <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                   <strong> </strong> Succcess.</div>'
+               );
+               return $this->redirect(['index']);
+            }
+             
         }
 
         return $this->render('create', [
@@ -77,20 +83,25 @@ class BalanceController extends Controller
         ]);
     }
 
-    /**
-     * Updates an existing Balance model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
+    
     public function actionUpdate($id)
     {
         $this->layout='CampusLayout';
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->required_amount>=$model->amount_to_pay){
+                Yii::$app->db->createCommand()
+                ->update('balance', ['required_amount' => $model->required_amount,'amount_to_pay'=>$model->amount_to_pay], ['student_id' => $model->student_id])
+                ->execute();
+                Yii::$app->session->setFlash('update', '
+                <div class="alert alert-success alert-dismissable">
+                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                <strong> </strong> update sucessfull.</div>'
+             );
+             return $this->redirect(['index']);
+            }
+            
         }
 
         return $this->render('update', [
@@ -98,13 +109,7 @@ class BalanceController extends Controller
         ]);
     }
 
-    /**
-     * Deletes an existing Balance model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
+    
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
@@ -112,13 +117,7 @@ class BalanceController extends Controller
         return $this->redirect(['index']);
     }
 
-    /**
-     * Finds the Balance model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Balance the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
+    
     protected function findModel($id)
     {
         if (($model = Balance::findOne($id)) !== null) {

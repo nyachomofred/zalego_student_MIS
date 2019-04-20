@@ -33,6 +33,7 @@ class Balance extends \yii\db\ActiveRecord
     {
         return [
             [['student_id'], 'integer'],
+            [['student_id'], 'unique'],
             [['required_amount', 'amount_to_pay', 'amount_paid', 'balance'], 'integer'],
             [['student_id'], 'exist', 'skipOnError' => true, 'targetClass' => Personalinfo::className(), 'targetAttribute' => ['student_id' => 'id']],
         ];
@@ -46,10 +47,10 @@ class Balance extends \yii\db\ActiveRecord
         return [
             'id' => '',
             'student_id' => 'Student ID',
-            'required_amount' => 'Required Amount',
-            'amount_to_pay' => 'Amount To Pay',
-            'amount_paid' => 'Amount Paid',
-            'balance' => 'Balance',
+            'required_amount' => 'Required Amount (ksh)',
+            'amount_to_pay' => 'Amount To Pay (ksh)',
+            'amount_paid' => 'Amount Paid (ksh)',
+            'balance' => 'Balance (ksh)',
             'globalSearch'=>'',
         ];
     }
