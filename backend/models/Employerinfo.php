@@ -53,7 +53,7 @@ class Employerinfo extends \yii\db\ActiveRecord
             [[ 'employer_phone',], 'unique'],
             [[ 'employer_phone',], 'match', 'pattern' => '/^\d{10}$/', 'message' => 'Field must contain exactly 10 digits'],
              
-            [['employer_email'], 'required'],
+            
             [['employer_email'], 'email'],
             [['employer_email'], 'unique'],
 

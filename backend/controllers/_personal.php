@@ -1,0 +1,14 @@
+$model->save();
+                $sponsorinfo->student_id=$model->id;
+                $sponsorinfo->save();
+                $employerinfo->student_id=$model->id;
+                $employerinfo->save();
+                $academicinfo->student_id=$model->id;
+                $academicinfo->save();
+                $college->student_id=$model->id;
+                $college->save();
+                $employmentinfo->student_id=$model->id;
+                $employmentinfo->save();
+                $courseapplied->student_id=$model->id;
+                $courseapplied->course=implode(",",$courseapplied->course);
+                $courseapplied->save();

@@ -124,7 +124,15 @@ use dosamigos\datepicker\DatePicker;
                          <?= $form->field($sponsorinfo, 'sponsor')->textInput(['maxlength' => true]) ?>
                        </div>
                        <div class="col-sm-1">
-                          <?= $form->field($sponsorinfo, 'sponsor_title')->textInput(['maxlength' => true]) ?>
+                          <?= $form->field($sponsorinfo, 'sponsor_title')->dropdownlist([
+                             'Mr'=>'Mr',
+                             'Mrs'=>'Mrs',
+                             'Miss'=>'Miss',
+                             'Ms'=>'Ms',
+                             'Madam'=>'Madam',
+                             'Sir'=>'Sir',
+                             'Hon'=>'Hon',
+                             ]) ?>
                        </div>
                        <div class="col-sm-3">
                           <?= $form->field($sponsorinfo, 'sponsor_name')->textInput(['maxlength' => true]) ?>

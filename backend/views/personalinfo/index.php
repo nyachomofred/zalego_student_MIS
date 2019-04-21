@@ -12,8 +12,8 @@ use kartik\grid\GridView;
 <div class="campus-index">
   <?=$this->params['breadcrumbs'][] = $this->title;?>
     <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-10">
+        <div class="col-sm-0"></div>
+        <div class="col-sm-12">
            
             
             <?php Pjax::begin(); ?>
@@ -35,13 +35,27 @@ use kartik\grid\GridView;
                     'email:email',
                     'phone',
                    // 'alternate_phone',
-                   // 'citizenship',
-                   // 'marital_status',
+                   'citizenship',
+                    'marital_status',
                     //'future_career',
                     //'physical_address',
-                    //'religion',
+                    'religion',
                     //'medical_condition',
-                    ['class' => 'yii\grid\ActionColumn'],
+                    ['class' => 'yii\grid\ActionColumn',
+                    'contentOptions' => ['style' => 'width: 20%'],
+                    'visible'=> Yii::$app->user->isGuest ? false : true,
+                    'buttons'=>[
+                        'view'=>function ($url) {
+                            return Html::a('view', $url, ['class' => 'glyphicon glyphicon-credit-card btn btn-default btn-xs custom_button']);
+                        },
+                        'update'=>function ($url) {
+                            return Html::a('update', $url, ['class' => 'glyphicon glyphicon-pencil btn btn-default btn-xs custom_button']);
+                        },
+                        
+                    
+                    ],
+                ],
+                    //['class' => 'yii\grid\ActionColumn'],
                 ],
                 'panel' => [
                     'heading'=>'<h3 class="panel-title"><i class="glyphicon glyphicon-globe"></i> Students</h3>',

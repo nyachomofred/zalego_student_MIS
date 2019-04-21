@@ -66,7 +66,7 @@ class BalanceController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             if($model->required_amount>=$model->amount_to_pay){
                 $model->amount_paid=0;
-                $model->balance=$model->amount_to_pay;
+                $model->balance=$model->amount_to_pay-$model->amount_paid;
                 $model->save();
                 Yii::$app->session->setFlash('debit', '
                    <div class="alert alert-success alert-dismissable">
@@ -87,12 +87,16 @@ class BalanceController extends Controller
     public function actionUpdate($id)
     {
         $this->layout='CampusLayout';
-        $model = $this->findModel($id);
+         $bal=new Balance();
+         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
             if($model->required_amount>=$model->amount_to_pay){
+                $amount_to_pay=Balance::find()->where(['student_id'=>$model->student_id])->sum('amount_to_pay');
+                $amountpaid=Balance::find()->where(['student_id'=>$model->student_id])->sum('amount_paid');
+                $balance=$amount_to_pay-$amountpaid;
                 Yii::$app->db->createCommand()
-                ->update('balance', ['required_amount' => $model->required_amount,'amount_to_pay'=>$model->amount_to_pay], ['student_id' => $model->student_id])
+                ->update('balance', ['required_amount' => $model->required_amount,'amount_to_pay'=>$model->amount_to_pay,'balance'=>$balance], ['student_id' => $model->student_id])
                 ->execute();
                 Yii::$app->session->setFlash('update', '
                 <div class="alert alert-success alert-dismissable">

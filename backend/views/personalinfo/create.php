@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Personalinfo */
 
-$this->title = 'Create Personalinfo';
+$this->title = 'Add new student';
 $this->params['breadcrumbs'][] = ['label' => 'Personalinfos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

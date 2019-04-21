@@ -47,6 +47,7 @@ class PersonalinfoController extends Controller
      */
     public function actionIndex()
     {
+        $this->layout='CampusLayout';
         $searchModel = new PersonalinfoSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -86,25 +87,64 @@ class PersonalinfoController extends Controller
         $employmentinfo=new Employmentinfo();
         $courseapplied=new Courseapplied();
         
-        if ($model->load(Yii::$app->request->post()) && $sponsorinfo->load(Yii::$app->request->post())&& 
-         $employerinfo->load(Yii::$app->request->post())&& $academicinfo->load(Yii::$app->request->post())&& $college->load(Yii::$app->request->post()) &&
-         $employmentinfo->load(Yii::$app->request->post()) && $courseapplied->load(Yii::$app->request->post())) {
-             if($model->validate()&& $sponsorinfo->validate()&& $employerinfo->validate()&& $academicinfo->validate()&& $college->validate()&& $employmentinfo->validate()&& $courseapplied->validate()){
-                $model->save();
-                $sponsorinfo->student_id=$model->id;
-                $sponsorinfo->save();
-                $employerinfo->student_id=$model->id;
-                $employerinfo->save();
-                $academicinfo->student_id=$model->id;
-                $academicinfo->save();
-                $college->student_id=$model->id;
-                $college->save();
-                $employmentinfo->student_id=$model->id;
-                $employmentinfo->save();
-                $courseapplied->student_id=$model->id;
-                $courseapplied->course=implode(",",$courseapplied->course);
-                $courseapplied->save();
-                return $this->redirect(['view', 'id' => $model->id]);
+        if (
+            $model->load(Yii::$app->request->post())&& 
+            $sponsorinfo->load(Yii::$app->request->post())&& 
+            $employerinfo->load(Yii::$app->request->post())&& 
+            $academicinfo->load(Yii::$app->request->post())&& 
+            $college->load(Yii::$app->request->post()) &&
+            $employmentinfo->load(Yii::$app->request->post()) && 
+            $courseapplied->load(Yii::$app->request->post())) {
+             if(
+                  $model->validate()&&
+                  $sponsorinfo->validate()&& 
+                  $employerinfo->validate()&& 
+                  $academicinfo->validate()&& 
+                  $college->validate()&& 
+                  $employmentinfo->validate()&& 
+                  $courseapplied->validate()){
+                  if($model->load(Yii::$app->request->post())!=''){
+                      $model->save();
+                     
+                      if($sponsorinfo->load(Yii::$app->request->post())!=''){
+                         $sponsorinfo->student_id=$model->id;
+                         $sponsorinfo->save();
+                        
+                        if( $employerinfo->load(Yii::$app->request->post())!=''){
+                             $employerinfo->student_id=$model->id;
+                             $employerinfo->save();
+                            
+                            if( $academicinfo->load(Yii::$app->request->post())!=''){
+                                $academicinfo->student_id=$model->id;
+                                $academicinfo->save();
+                               
+                                if($college->load(Yii::$app->request->post())!=''){
+                                    $college->student_id=$model->id;
+                                     $college->save();
+                                     
+                                    if($employmentinfo->load(Yii::$app->request->post())!=''){
+                                         $employmentinfo->student_id=$model->id;
+                                         $employmentinfo->save();
+                                         
+                                        if($courseapplied->load(Yii::$app->request->post())!=''){
+                                             $courseapplied->student_id=$model->id;
+                                             $courseapplied->course=implode(",",$courseapplied->course);
+                                             $courseapplied->save();
+
+                                        }
+                                    }
+                                }    
+                            }
+                        }
+                      }
+                  }
+               
+                  Yii::$app->session->setFlash('create', '
+                    <div class="alert alert-success alert-dismissable">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <strong> </strong> update sucessfull.</div>'
+                );
+                  return $this->redirect(['index']);
              }
            
           
@@ -146,6 +186,7 @@ class PersonalinfoController extends Controller
      */
     public function actionDelete($id)
     {
+        $this->layout='CampusLayout';
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -160,6 +201,7 @@ class PersonalinfoController extends Controller
      */
     protected function findModel($id)
     {
+        $this->layout='CampusLayout';
         if (($model = Personalinfo::findOne($id)) !== null) {
             return $model;
         }

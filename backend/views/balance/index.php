@@ -13,6 +13,7 @@
  ?>
  <?= Yii::$app->session->getflash('debit')?>
  <?= Yii::$app->session->getflash('update')?>
+ <?= Yii::$app->session->getflash('credit')?>
  <!-- Info boxes -->
  <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">

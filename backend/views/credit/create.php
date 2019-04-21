@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 //$this->title = 'Create Credit';
-$this->params['breadcrumbs'][] = ['label' => 'Credits', 'url' => ['index']];
+//$this->params['breadcrumbs'][] = ['label' => 'Credits', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="credit-create">

@@ -82,8 +82,14 @@ class CreditController extends Controller
                 Yii::$app->db->createCommand()
                 ->update('balance', ['amount_paid' => $amount_paid,'balance'=>$bal], ['student_id' => $model->student_id])
                 ->execute();
+                Yii::$app->session->setFlash('credit', '
+                   <div class="alert alert-success alert-dismissable">
+                   <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                   <strong> </strong> Succcess.</div>'
+               );
+               return $this->redirect(['balance/index']);
             }
-            return $this->redirect(['view', 'id' => $model->id]);
+            
         }
 
         return $this->render('create', [
