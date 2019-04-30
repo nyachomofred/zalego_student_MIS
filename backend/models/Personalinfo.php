@@ -51,7 +51,7 @@ class Personalinfo extends \yii\db\ActiveRecord
               [['level'],'required'],
 
               [['student_id'],'required'],
-              [['student_id'],'string','min'=>2,'max'=>8],
+              [['student_id'],'string','min'=>2,'max'=>20],
               [['student_id'],'unique'],
 
               [['full_name'],'required'],
@@ -64,14 +64,14 @@ class Personalinfo extends \yii\db\ActiveRecord
 
               [['gender'],'required'],
 
-              [['id_no'], 'match', 'pattern' => '/^\d{8}$/', 'message' => 'Field must contain exactly 8 digits'],
-              [['id_no'], 'unique' ,'message'=>'this id is already taken'],
-              [['id_no'], 'required'],
+              //[['id_no'], 'match', 'pattern' => '/^\d{8}$/', 'message' => 'Field must contain exactly 8 digits'],
+             // [['id_no'], 'unique' ,'message'=>'this id is already taken'],
+              [['id_no'], 'string'],
              
               //validation for email
-              [['email'], 'required'],
-              [['email'], 'email'],
-              [['email'], 'unique'],
+              //[['email'], 'required'],
+              [['email'], 'string'],
+              //[['email'], 'unique'],
 
               //validation for phonenumber and alternate phonenumber
 
@@ -81,9 +81,9 @@ class Personalinfo extends \yii\db\ActiveRecord
             [[ 'phone',], 'match', 'pattern' => '/^\d{10}$/', 'message' => 'Field must contain exactly 10 digits'],
 
            
-            [[  'alternate_phone'], 'integer'],
-            [[  'alternate_phone'], 'unique'],
-            [[  'alternate_phone'], 'match', 'pattern' => '/^\d{10}$/', 'message' => 'Field must contain exactly 10 digits'],
+            [[  'alternate_phone'], 'string'],
+            //[[  'alternate_phone'], 'unique'],
+            //[[  'alternate_phone'], 'match', 'pattern' => '/^\d{10}$/', 'message' => 'Field must contain exactly 10 digits'],
 
             //rules for firstname,midlename and lastname
 

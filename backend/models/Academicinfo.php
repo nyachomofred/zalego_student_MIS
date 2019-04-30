@@ -44,7 +44,7 @@ class Academicinfo extends \yii\db\ActiveRecord
            
             [['city_or_town'], 'string','min'=>3,'max'=>40],
             [['city_or_town'], 'filter','filter'=>'ucfirst'],
-            [['city_or_town'], 'match' ,'pattern' => '/^[a-zA-Z\s]+$/','message'=>'only character string ia allowed'],
+            //[['city_or_town'], 'match' ,'pattern' => '/^[a-zA-Z\s]+$/','message'=>'only character string ia allowed'],
              
             [['Year_of_completion'], 'string'],
 

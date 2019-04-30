@@ -35,6 +35,7 @@ class CourseController extends Controller
      */
     public function actionIndex()
     {
+        //$this->layout='CampusLayout';
         $searchModel = new CourseSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -52,6 +53,7 @@ class CourseController extends Controller
      */
     public function actionView($id)
     {
+        //$this->layout='CampusLayout';
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -64,6 +66,7 @@ class CourseController extends Controller
      */
     public function actionCreate()
     {
+        //$this->layout='CampusLayout';
         $model = new Course();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -89,6 +92,7 @@ class CourseController extends Controller
      */
     public function actionUpdate($id)
     {
+        //$this->layout='CampusLayout';
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -114,6 +118,7 @@ class CourseController extends Controller
      */
     public function actionDelete($id)
     {
+        //$this->layout='CampusLayout';
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -128,6 +133,7 @@ class CourseController extends Controller
      */
     protected function findModel($id)
     {
+        //$this->layout='CampusLayout';
         if (($model = Course::findOne($id)) !== null) {
             return $model;
         }

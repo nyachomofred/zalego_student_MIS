@@ -47,7 +47,7 @@ class PersonalinfoController extends Controller
      */
     public function actionIndex()
     {
-        $this->layout='CampusLayout';
+       // $this->layout='CampusLayout';
         $searchModel = new PersonalinfoSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -65,7 +65,7 @@ class PersonalinfoController extends Controller
      */
     public function actionView($id)
     {
-        $this->layout='CampusLayout';
+        //$this->layout='CampusLayout';
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -78,7 +78,7 @@ class PersonalinfoController extends Controller
      */
     public function actionCreate()
     {
-        $this->layout='CampusLayout';
+       // $this->layout='CampusLayout';
         $model = new Personalinfo();
         $sponsorinfo=new Sponsorinfo();
         $employerinfo=new Employerinfo();
@@ -165,7 +165,7 @@ class PersonalinfoController extends Controller
     
     public function actionUpdate($id)
     {
-        $this->layout='CampusLayout';
+        //$this->layout='CampusLayout';
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -186,7 +186,7 @@ class PersonalinfoController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->layout='CampusLayout';
+       // $this->layout='CampusLayout';
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -201,7 +201,7 @@ class PersonalinfoController extends Controller
      */
     protected function findModel($id)
     {
-        $this->layout='CampusLayout';
+        //$this->layout='CampusLayout';
         if (($model = Personalinfo::findOne($id)) !== null) {
             return $model;
         }

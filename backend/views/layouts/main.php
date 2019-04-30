@@ -5,8 +5,6 @@
 
 use backend\assets\AppAsset;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 use yii\helpers\Url;
@@ -24,70 +22,120 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini">
+
 <?php $this->beginBody() ?>
 
-<div class="wrap">
-    <header class="main-header">
-        <!-- Logo -->
-        <a href="#" class="logo">
-        <span class="logo-lg"><b>Zalego </b>SMIS</span>
-        </a>
-        <!-- Header Navbar: style can be found in header.less -->
-        <nav class="navbar navbar-static-top">
-        <!-- Sidebar toggle button-->
-        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-            <span class="sr-only">Toggle navigation</span>
-        </a>
+<div class="wrapper">
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="/zalego/backend/web/site/index" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><b>Zalego</b>Mis</span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b>Zalego</b>SRS</span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
 
-        <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
-            <li class="dropdown user user-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="<?php echo url::to('@web/images/zalego.jpeg');?>" class="user-image" alt="User Image">
-                <span class="hidden-xs"><?= \Yii::$app->user->identity->username?></span>
-                </a>
-                <ul class="dropdown-menu">
-                <!-- User image -->
-                <li class="user-header">
-                    <img src="<?php echo url::to('@web/images/zalego.jpeg');?>" class="img-circle" alt="User Image">
-
-                    <p>
-                    <?= \Yii::$app->user->identity->username?>-system admin
-                    <small>Member  since  2018</small>
-                    </p>
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                <!-- Messages: style can be found in dropdown.less-->
+                <li class="dropdown messages-menu">
+                    <ul class="dropdown-menu">
+                    <li class="header">You have 4 messages</li>
+                    <li>
+                        <!-- inner menu: contains the actual data -->
+                        <ul class="menu">
+                        <li><!-- start message -->
+                            <a href="#">
+                            <div class="pull-left">
+                                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                            </div>
+                            <h4>
+                                Support Team
+                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                            </h4>
+                            <p>Why not buy a new awesome theme?</p>
+                            </a>
+                        </li>
+                        <!-- end message -->
+                        <li>
+                            <a href="#">
+                            <div class="pull-left">
+                                <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                            </div>
+                            <h4>
+                                AdminLTE Design Team
+                                <small><i class="fa fa-clock-o"></i> 2 hours</small>
+                            </h4>
+                            <p>Why not buy a new awesome theme?</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                            <div class="pull-left">
+                                <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                            </div>
+                            <h4>
+                                Developers
+                                <small><i class="fa fa-clock-o"></i> Today</small>
+                            </h4>
+                            <p>Why not buy a new awesome theme?</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                            <div class="pull-left">
+                                <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                            </div>
+                            <h4>
+                                Sales Department
+                                <small><i class="fa fa-clock-o"></i> Yesterday</small>
+                            </h4>
+                            <p>Why not buy a new awesome theme?</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                            <div class="pull-left">
+                                <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                            </div>
+                            <h4>
+                                Reviewers
+                                <small><i class="fa fa-clock-o"></i> 2 days</small>
+                            </h4>
+                            <p>Why not buy a new awesome theme?</p>
+                            </a>
+                        </li>
+                        </ul>
+                    </li>
+                    <li class="footer"><a href="#">See All Messages</a></li>
+                    </ul>
                 </li>
-               
-                <li class="user-footer">
-                    <div class="pull-right">
-                    <a href="#" class="btn btn-default btn-flat">profile</a>
-                    </div>
-
-                    <div class="pull-left">
-                    <?=
-                    '<li>'
-                    . Html::beginForm(['/site/logout'], 'post')
-                    . Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->username . ')',
-                        ['class' => 'btn btn-default btn-flat']
-                    )
-                    . Html::endForm()
-                    . '</li>';
+                  <div class="pull-right">
+                   
+                       <?php
+                           echo
+                           Html::beginForm(['/site/logout'], 'post'),
+                           Html::submitButton(
+                          'Logout (' . Yii::$app->user->identity->username . ')',
+                           ['class' => 'btn btn-success Sign out']
+                           ),
+                           Html::endForm() ?>
                     
-                    ?>
-                    </div>
+                  </div>
+                </li>
+                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                 </li>
                 </ul>
-            </li>
-            <!-- Control Sidebar Toggle Button -->
-            <li>
-                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-            </li>
-            </ul>
-        </div>
-        </nav>
-    </header>
-    
+            </div>
+            </nav>
+        </header>
     <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -119,26 +167,26 @@ AppAsset::register($this);
        
         <li>
           <a href="/zalego/backend/web/index.php?r=personalinfo">
-            <i class="fa fa-user"></i> <span>student </span>
+            <i class="fa fa-user"></i> <span>Student </span>
           </a>
         </li>
 
         <li>
         <a href="/zalego/backend/web/index.php?r=project">
-          <i class="fa fa-laptop"></i><span>student project </span>
+          <i class="fa fa-laptop"></i><span>Students' Project </span>
           </a>
         </li>
 
         <li>
         <a href="/zalego/backend/web/index.php?r=certificate">
-          <i class="fa fa-files-o"></i> <span>student certificate </span>
+          <i class="fa fa-files-o"></i> <span>Students' Certificate </span>
           </a>
         </li>
 
     
         <li>
         <a href="/zalego/backend/web/index.php?r=balance">
-            <i class="fa fa-money"></i> <span>student finance </span>
+            <i class="fa fa-money"></i> <span>Students' Finance </span>
           </a>
         </li>
 
@@ -150,12 +198,12 @@ AppAsset::register($this);
 
         <li>
         <a href="/zalego/backend/web/index.php?r=course">
-            <i class="fa fa-calendar"></i> <span>courses</span>
+            <i class="fa fa-calendar"></i> <span>Courses</span>
           </a>
         </li>
         <li>
         <a href="/zalego/backend/web/index.php?r=campus">
-          <i class="fa fa-folder"></i> <span>campuses</span>
+          <i class="fa fa-folder"></i> <span>Campuses</span>
           </a>
         </li>
       </ul>
@@ -165,16 +213,16 @@ AppAsset::register($this);
 
   <!-- Content Wrapper. Contains page content --> 
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
+       <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+           
+    <!-- Main content -->
+    <section class="content" style="background-color:white">
+      <!-- Small boxes (Stat box) -->
         <?= $content ?>
+    </section>
     </div>
 </div>
-
-
 <?php $this->endBody() ?>
 </body>
 </html>

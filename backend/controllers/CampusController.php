@@ -35,7 +35,7 @@ class CampusController extends Controller
      */
     public function actionIndex()
     {
-        //$this->layout='CampusLayout';
+       // $this->layout='CampusLayout';
         $searchModel = new CampusSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -53,6 +53,7 @@ class CampusController extends Controller
      */
     public function actionView($id)
     {
+        //$this->layout='CampusLayout';
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -65,8 +66,9 @@ class CampusController extends Controller
      */
     public function actionCreate()
     {
+        //$this->layout='CampusLayout';
         $model = new Campus();
-
+        
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('create', '
             <div class="alert alert-success alert-dismissable">
@@ -90,6 +92,7 @@ class CampusController extends Controller
      */
     public function actionUpdate($id)
     {
+       // $this->layout='CampusLayout';
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -108,6 +111,7 @@ class CampusController extends Controller
 
     public function actionDelete($id)
     {
+        //$this->layout='CampusLayout';
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -115,6 +119,7 @@ class CampusController extends Controller
 
     protected function findModel($id)
     {
+        //$this->layout='CampusLayout';
         if (($model = Campus::findOne($id)) !== null) {
             return $model;
         }

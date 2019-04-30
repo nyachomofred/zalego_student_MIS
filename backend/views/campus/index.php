@@ -10,8 +10,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <?= Yii::$app->session->getFlash('update') ?>
 <div class="campus-index">
     <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-10">
+        <div class="col-sm-0"></div>
+        <div class="col-sm-12">
             <h1><?= Html::encode($this->title) ?></h1>
             <?php Pjax::begin(); ?>
             <?php  echo $this->render('_search', ['model' => $searchModel]); ?>

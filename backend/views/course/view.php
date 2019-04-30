@@ -12,8 +12,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="course-view">
     <div class="row">
-      <div class="col-sm-2"></div>
-      <div class="col-sm-10">
+      <div class="col-sm-0"></div>
+      <div class="col-sm-12">
             <h1><?= Html::encode($this->title) ?></h1>
 
             <p>
@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'course_name',
                     'course_level',
                     'course_duration',
-                    'course_description',
+                    'course_description:ntext',
                 ],
             ]) ?>
      </div>

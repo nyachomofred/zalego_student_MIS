@@ -13,16 +13,16 @@ use yii\helpers\ArrayHelper;
                 <div class="panel-body">
 
                    <div class="row">
-                       <div class="col-sm-4">
-                         <?= $form->field($model, 'campus_code')->textInput(['maxlength' => true]) ?>
-                       </div>
+                      
+                         <?= $form->field($model, 'campus_code')->textInput(['placeholder'=>'campus code']) ?>
+                       
 
-                       <div class="col-sm-4">
+                      
                        <?= $form->field($model, 'campus_name')->textInput(['maxlength' => true]) ?>
-                       </div>
-                       <div class="col-sm-4">
+                       
+                      
                        <?= $form->field($model, 'campus_location')->textInput(['maxlength' => true]) ?>
-                       </div>
+                       
                    </div>
                 </div>
             </div>

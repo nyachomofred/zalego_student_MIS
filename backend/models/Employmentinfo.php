@@ -36,11 +36,11 @@ class Employmentinfo extends \yii\db\ActiveRecord
 
             [['employer'], 'string','min'=>3,'max'=>40],
             [['employer'], 'filter','filter'=>'ucfirst'],
-            [['employer'], 'match' ,'pattern' => '/^[a-zA-Z\s]+$/','message'=>'only character string ia allowed'],
+           // [['employer'], 'match' ,'pattern' => '/^[a-zA-Z\s]+$/','message'=>'only character string ia allowed'],
 
             [['job_description'], 'string','min'=>3,'max'=>40],
             [['job_description'], 'filter','filter'=>'ucfirst'],
-            [['job_description'], 'match' ,'pattern' => '/^[a-zA-Z\s]+$/','message'=>'only character string ia allowed'],
+           // [['job_description'], 'match' ,'pattern' => '/^[a-zA-Z\s]+$/','message'=>'only character string ia allowed'],
 
             [['date_of_employment'], 'string'],
 

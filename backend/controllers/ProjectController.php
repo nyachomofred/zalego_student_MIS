@@ -35,7 +35,7 @@ class ProjectController extends Controller
      */
     public function actionIndex()
     {
-        $this->layout='CampusLayout';
+        //$this->layout='CampusLayout';
         $searchModel = new ProjectSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
        
@@ -53,7 +53,7 @@ class ProjectController extends Controller
      */
     public function actionView($id)
     {
-        $this->layout='CampusLayout';
+       // $this->layout='CampusLayout';
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -66,7 +66,7 @@ class ProjectController extends Controller
      */
     public function actionCreate()
     {
-        $this->layout='CampusLayout';
+        //$this->layout='CampusLayout';
        
         $model = new Project();
 
@@ -82,7 +82,7 @@ class ProjectController extends Controller
    
     public function actionUpdate($id)
     {
-        $this->layout='CampusLayout';
+       // $this->layout='CampusLayout';
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -105,7 +105,7 @@ class ProjectController extends Controller
     
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        //$this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }

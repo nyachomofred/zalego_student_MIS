@@ -1,0 +1,7 @@
+[30-Dec-2018 17:44:33 UTC] PHP Fatal error:  Class 'ZalegoStudent' not found in /home/zalegoin/student.zalegoinstitute.ac.ke/student/backend/views/site/index.php on line 10
+[31-Dec-2018 06:12:39 UTC] PHP Fatal error:  Class 'Html' not found in /home/zalegoin/student.zalegoinstitute.ac.ke/student/backend/views/zalego-student/view.php on line 19
+[31-Dec-2018 06:26:23 UTC] PHP Fatal error:  Call to undefined function backend\controllers\setFlash() in /home/zalegoin/student.zalegoinstitute.ac.ke/student/backend/controllers/ZalegoStudentController.php on line 118
+[31-Dec-2018 06:28:15 UTC] PHP Fatal error:  Call to undefined function backend\controllers\setFlash() in /home/zalegoin/student.zalegoinstitute.ac.ke/student/backend/controllers/ZalegoStudentController.php on line 118
+[31-Dec-2018 06:56:00 UTC] PHP Fatal error:  Function name must be a string in /home/zalegoin/student.zalegoinstitute.ac.ke/student/backend/views/zalego-student/view.php on line 172
+[02-Mar-2019 13:18:50 UTC] PHP Fatal error:  Class 'Url' not found in /home/zalegoin/studentmis.zalegoinstitute.ac.ke/student/backend/views/zalego-student/index.php on line 38
+[03-Mar-2019 09:16:23 UTC] PHP Fatal error:  Class 'ZalegoStudent' not found in /home/zalegoin/studentmis.zalegoinstitute.ac.ke/student/backend/views/zalego-student/_update.php on line 81

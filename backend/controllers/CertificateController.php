@@ -64,7 +64,7 @@ class CertificateController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Certificate();
+       // $model = new Certificate();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
